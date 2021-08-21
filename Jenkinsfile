@@ -31,7 +31,7 @@ pipeline{
         stage ('Publish to nexus'){
             steps {
                 script {
-                def NexusRepo = Version.endswith("SNAPSHOT") ? "wasimdevopslab-SNAPSHOT" : "wasimdevopslab-RELEASE"
+                def NexusRepo = Version.endsWith("SNAPSHOT") ? "wasimdevopslab-SNAPSHOT" : "wasimdevopslab-RELEASE"
                 nexusArtifactUploader artifacts:
                 [[artifactId: "${ArtifactId}",
                 classifier: '',
