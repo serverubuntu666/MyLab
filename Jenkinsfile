@@ -30,6 +30,8 @@ pipeline{
         // Stage 3 : Publish the artifact to nexus
         stage ('Publish to nexus'){
             steps {
+                script {
+                def NexusRepo = Version.endswith("SNAPSHOT") ? "wasimdevopslab-SNAPSHOT" : "wasimdevopslab-RELEASE"
                 nexusArtifactUploader artifacts:
                 [[artifactId: "${ArtifactId}",
                 classifier: '',
@@ -39,7 +41,8 @@ pipeline{
                 groupId: "${GroupId}",
                 nexusUrl: '10.123.2.68:8081',
                 nexusVersion: 'nexus3',
-                protocol: 'http', repository: 'wasimdevopslab-SNAPSHOT',
+                protocol: 'http',
+                repository: "${NexusRepo}",
                 version: "${Version}"
             }
         }
