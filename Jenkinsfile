@@ -22,7 +22,12 @@ pipeline{
 
             }
         }
-
+        // Stage 3 : Publish the artifact to nexus
+        stage ('Publish to nexus'){
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'VinayDevOpsLab', classifier: '', file: 'target/VinayDevOpsLab-0.0.4-SNAPSHOT.war', type: 'war']], credentialsId: '5e6877d7-fef9-4219-8d0f-c0eab8edc50f', groupId: 'com.vinaysdevopslab', nexusUrl: '10.123.2.68', nexusVersion: 'nexus3', protocol: 'http', repository: 'wasimdevopslab-SNAPSHOT', version: '0.0.4-SNAPSHOT'
+            }
+        }
         // Stage3 : Deploying
         stage ('deploy'){
             steps {
