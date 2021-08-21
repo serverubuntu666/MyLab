@@ -44,6 +44,7 @@ pipeline{
                 protocol: 'http',
                 repository: "${NexusRepo}",
                 version: "${Version}"
+                }
             }
         }
 
