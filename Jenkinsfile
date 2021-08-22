@@ -79,7 +79,7 @@ pipeline{
             }
         }
         // Stage 6 : download and deploy build artifact to docker
-        stage ('deploy'){
+        stage ('deploy to docker'){
             steps {
                 echo 'deploying.....'
                 sshPublisher(publishers:
